@@ -26,13 +26,16 @@ export default function LoanForm(){
         setAppModal(true);
         setTimeout(()=>{
             setAppModal(false);
-            setLoanInputs({
-                name: '',
-                phoneNumber: '',
-                age: '',
-                employee: false,
-                salary: ''
-            }); // Reset loanInputs state after modal is hidden
+            if(appModal){
+                setLoanInputs({
+                    name: '',
+                    phoneNumber: '',
+                    age: '',
+                    employee: false,
+                    salary: ''
+                }); 
+            }
+            // Reset loanInputs state after modal is hidden
 
         },3000); // Show modal when form is submitted
     }
