@@ -14,30 +14,27 @@ export default function LoanForm(){
 
     function handelFormSubmit(e){
         e.preventDefault();
-        const{age}=loanInputs;
-        const{phoneNumber}=loanInputs;
-        //alert("Form submitted successfully!");
+        const { age } = loanInputs;
+        const { phoneNumber } = loanInputs;
         setErrorMessage(null);
-        if(age<18 || age>100){
+        if (age < 18 || age > 100) {
             setErrorMessage("The age must be between 18 and 100");
-        }else if(phoneNumber.length<10 || phoneNumber.length>12){
+        } else if (phoneNumber.length < 10 || phoneNumber.length > 12) {
             setErrorMessage("The phone number must be between 10 and 12 digits");
+        } else {
+            // If no error, clear the form inputs
+            setLoanInputs({
+                name: '',
+                phoneNumber: '',
+                age: '',
+                employee: false,
+                salary: ''
+            });
         }
         setAppModal(true);
-        setTimeout(()=>{
+        setTimeout(() => {
             setAppModal(false);
-            if(appModal){
-                setLoanInputs({
-                    name: '',
-                    phoneNumber: '',
-                    age: '',
-                    employee: false,
-                    salary: ''
-                }); 
-            }
-            // Reset loanInputs state after modal is hidden
-
-        },3000); // Show modal when form is submitted
+        }, 3000); // Show modal when form is submitted
     }
 
     function HandelShowModal(){
